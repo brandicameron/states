@@ -1,0 +1,183 @@
+:root {
+  --green: #8ac926;
+  --blue: #1497e9;
+  --yellow: #ffd04f;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+  height: 110px;
+  background: var(--blue);
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 0 50px 50px;
+  margin: 0 auto;
+}
+
+/* header {
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+  height: 110px;
+  background: var(--blue);
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 0 50px 50px;
+  margin: 0 auto;
+} */
+
+h1 {
+  margin: -10px 0 10px 0;
+  color: var(--yellow);
+}
+
+.container {
+  width: 100vw;
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+.st0:hover {
+  fill: #c0bfbf;
+}
+
+.correct {
+  fill: var(--green);
+}
+
+.grey {
+  fill: #d0d0d0;
+}
+
+.score {
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  right: 0;
+  bottom: 0;
+  background: var(--blue);
+  color: #fff;
+  text-align: center;
+  width: 200px;
+  padding: 20px 10px;
+  border-radius: 40px 0 0 0;
+}
+
+.number {
+  font-size: 2rem;
+}
+
+.divider {
+  border-right: 1px dotted #fff;
+}
+
+.game-over {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%) scale(0);
+  background: var(--blue);
+  color: #fff;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  box-shadow: 15px 20px 50px -20px rgb(34 34 34 / 70%);
+  visibility: hidden;
+}
+
+.restart-btn {
+  background: var(--green);
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 7px;
+  padding: 10px;
+  margin-top: 20px;
+  color: #fff;
+  box-shadow: 5px 5px 10px -5px rgba(0 0 0 / 20%);
+}
+
+.restart-btn:hover {
+  filter: contrast(1.1);
+}
+
+.restart-btn:active {
+  transform: scale(0.99);
+}
+
+.grow {
+  animation: grow 0.3s linear forwards;
+}
+
+@keyframes grow {
+  to {
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+#District_of_Columbia:hover {
+  stroke-width: 5px;
+  stroke: #9c9c9c;
+}
+
+@media screen and (orientation: landscape) {
+  header {
+    flex-direction: row;
+    height: 50px;
+    width: 100vw;
+    border-radius: 0;
+  }
+
+  h1 {
+    position: absolute;
+    left: 10px;
+    top: 18px;
+    font-size: 1.8rem;
+  }
+
+  .question {
+    font-size: 1.5rem;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  .score {
+    width: 150px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  header,
+  .score {
+    width: 100vw;
+    border-radius: 0;
+  }
+
+  .container {
+    padding: 5px;
+  }
+}
