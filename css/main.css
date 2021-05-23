@@ -142,8 +142,9 @@ h1 {
   stroke: #9c9c9c;
 }
 
-@media screen and (orientation: landscape) {
+@media (pointer: coarse) and (orientation: landscape) {
   header {
+    position: fixed;
     flex-direction: row;
     height: 50px;
     width: 100vw;
@@ -162,6 +163,8 @@ h1 {
   }
 
   .container {
+    position: relative;
+    top: 60px;
     padding: 10px;
   }
 

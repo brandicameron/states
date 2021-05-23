@@ -1,7 +1,7 @@
-import { states } from "./states.js";
+import { states } from './states.js';
 let counter = 0;
 let correctStates = [];
-const stateQuestionDisplay = document.querySelector(".state");
+const stateQuestionDisplay = document.querySelector('.state');
 let shuffledStates;
 
 function shuffle(array) {
@@ -29,44 +29,46 @@ function question() {
 }
 
 function trackClicks(e) {
-  if (e.target.classList.contains("st0")) {
+  let correctSound = document.getElementById('correct-sound');
+  if (e.target.classList.contains('st0')) {
     counter++;
     displayCounter();
-    if (e.target.id.replace(/_/g, " ") === stateQuestionDisplay.textContent) {
-      document.getElementById("correct-sound").play();
-      e.target.setAttribute("class", "correct");
+    if (e.target.id.replace(/_/g, ' ') === stateQuestionDisplay.textContent) {
+      correctSound.currentTime = 0;
+      correctSound.play();
+      e.target.setAttribute('class', 'correct');
       correctStates.push(stateQuestionDisplay.textContent);
       displayScore();
       stateQuestionDisplay.textContent = shuffledStates[correctStates.length];
     }
   }
 
-  if (correctStates.length === 51) {
-    document.getElementById("cheer-sound").play();
-    document.querySelector(".game-over").classList.add("grow");
-    document.querySelector(".question").style.visibility = "hidden";
+  if (correctStates.length === 50) {
+    document.getElementById('cheer-sound').play();
+    document.querySelector('.game-over').classList.add('grow');
+    document.querySelector('.question').style.visibility = 'hidden';
   }
 }
 
 function displayCounter() {
-  let clickDisplay = document.querySelector(".click-display");
+  let clickDisplay = document.querySelector('.click-display');
   clickDisplay.textContent = counter;
 }
 
 function displayScore() {
-  let displayScore = document.querySelector(".score-display");
+  let displayScore = document.querySelector('.score-display');
   displayScore.textContent = correctStates.length;
 }
 
 function restart() {
-  const allStates = document.querySelectorAll(".correct");
+  const allStates = document.querySelectorAll('.correct');
 
   allStates.forEach((state) => {
-    state.setAttribute("class", "grey");
+    state.setAttribute('class', 'grey');
   });
 
-  document.querySelector(".question").style.visibility = "visible";
-  document.querySelector(".game-over").classList.remove("grow");
+  document.querySelector('.question').style.visibility = 'visible';
+  document.querySelector('.game-over').classList.remove('grow');
   counter = 0;
   correctStates = [];
   displayScore();
@@ -74,7 +76,7 @@ function restart() {
   question();
 }
 
-document.querySelector("#united-states").addEventListener("click", trackClicks);
-document.querySelector(".restart-btn").addEventListener("click", restart);
+document.querySelector('#united-states').addEventListener('click', trackClicks);
+document.querySelector('.restart-btn').addEventListener('click', restart);
 
 question();
