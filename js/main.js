@@ -84,8 +84,8 @@ function zoomOutMobile() {
   var viewport = document.querySelector('meta[name="viewport"]');
 
   if (viewport) {
-    viewport.content = 'initial-scale=0.1';
-    viewport.content = 'width=350';
+    viewport.content = 'initial-scale=1';
+    viewport.content = 'width=device-width';
   }
 }
 
