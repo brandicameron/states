@@ -24,19 +24,6 @@ header {
   margin: 0 auto;
 }
 
-/* header {
-  display: flex;
-  flex-direction: column;
-  width: 60vw;
-  height: 110px;
-  background: var(--blue);
-  color: #fff;
-  justify-content: center;
-  align-items: center;
-  border-radius: 0 0 50px 50px;
-  margin: 0 auto;
-} */
-
 h1 {
   margin: -10px 0 10px 0;
   color: var(--yellow);
@@ -177,11 +164,13 @@ h1 {
 @media screen and (max-width: 550px) {
   header,
   .score {
+    position: fixed;
     width: 100vw;
     border-radius: 0;
   }
 
   .container {
+    height: 100vh;
     padding: 5px;
   }
 }
