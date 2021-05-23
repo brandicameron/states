@@ -39,6 +39,7 @@ function trackClicks(e) {
       e.target.setAttribute('class', 'correct');
       correctStates.push(stateQuestionDisplay.textContent);
       displayScore();
+      zoomOutMobile();
       stateQuestionDisplay.textContent = shuffledStates[correctStates.length];
     }
   }
@@ -78,5 +79,14 @@ function restart() {
 
 document.querySelector('#united-states').addEventListener('click', trackClicks);
 document.querySelector('.restart-btn').addEventListener('click', restart);
+
+function zoomOutMobile() {
+  var viewport = document.querySelector('meta[name="viewport"]');
+
+  if (viewport) {
+    viewport.content = 'initial-scale=0.1';
+    viewport.content = 'initial-scale=1';
+  }
+}
 
 question();
