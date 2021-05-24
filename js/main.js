@@ -82,9 +82,9 @@ document.querySelector('.restart-btn').addEventListener('click', restart);
 
 var zoomreset = function () {
   var viewport = document.querySelector("meta[name='viewport']");
-  viewport.content = 'width=375, maximum-scale=0.635';
+  // viewport.content = 'maximum-scale=0.635';
   setTimeout(function () {
-    viewport.content = 'width=375, maximum-scale=1';
+    viewport.content = 'width=device-width, initial-scale=1, maximum-scale=1';
   }, 350);
 };
 
