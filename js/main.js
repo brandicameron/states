@@ -37,7 +37,13 @@ function trackClicks(e) {
       correctSound.currentTime = 0;
       correctSound.play();
       e.target.setAttribute('class', 'correct');
-      document.body.style.zoom = 1;
+      // document.body.style.zoom = 1;
+      let viewportmeta = document.querySelector('meta[name="viewport"]');
+
+      viewportmeta.setAttribute(
+        'content',
+        'initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0'
+      );
       correctStates.push(stateQuestionDisplay.textContent);
       displayScore();
       stateQuestionDisplay.textContent = shuffledStates[correctStates.length];
