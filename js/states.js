@@ -1,4 +1,4 @@
-let states = [
+export let states = [
   'Alaska',
   'Alabama',
   'Arkansas',
@@ -50,5 +50,3 @@ let states = [
   'West Virginia',
   'Wyoming',
 ];
-
-export { states };

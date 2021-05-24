@@ -1,12 +1,14 @@
 import { states } from './states.js';
-let counter = 0;
-let correctStates = [];
+let counter = 0,
+  shuffledStates,
+  correctStates = [];
 const stateQuestionDisplay = document.querySelector('.state');
-let shuffledStates;
+const question = document.querySelector('.question');
+const gameOverGraphic = document.querySelector('.game-over');
 
 function shuffle(array) {
-  // https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
-  var currentIndex = array.length,
+  // Big thanks to: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+  let currentIndex = array.length,
     temporaryValue,
     randomIndex;
 
@@ -23,37 +25,33 @@ function shuffle(array) {
   }
   return array;
 }
-function question() {
+
+function gameQuestion() {
   shuffledStates = shuffle(states);
   stateQuestionDisplay.textContent = shuffledStates[0];
 }
 
 function trackClicks(e) {
-  let correctSound = document.getElementById('correct-sound');
   if (e.target.classList.contains('st0')) {
     counter++;
     displayCounter();
     if (e.target.id.replace(/_/g, ' ') === stateQuestionDisplay.textContent) {
-      correctSound.currentTime = 0;
-      correctSound.play();
-      e.target.setAttribute('class', 'correct');
-      // document.body.style.zoom = 1;
-      let viewportmeta = document.querySelector('meta[name="viewport"]');
-
-      viewportmeta.setAttribute(
-        'content',
-        'initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0'
-      );
-      correctStates.push(stateQuestionDisplay.textContent);
-      displayScore();
-      stateQuestionDisplay.textContent = shuffledStates[correctStates.length];
+      correctAnswer(e);
     }
   }
+}
+
+function correctAnswer(e) {
+  let correctSound = document.getElementById('correct-sound');
+  correctSound.currentTime = 0;
+  correctSound.play();
+  e.target.setAttribute('class', 'correct');
+  correctStates.push(stateQuestionDisplay.textContent);
+  displayScore();
+  stateQuestionDisplay.textContent = shuffledStates[correctStates.length];
 
   if (correctStates.length === 50) {
-    document.getElementById('cheer-sound').play();
-    document.querySelector('.game-over').classList.add('grow');
-    document.querySelector('.question').style.visibility = 'hidden';
+    gameOver();
   }
 }
 
@@ -67,23 +65,28 @@ function displayScore() {
   displayScore.textContent = correctStates.length;
 }
 
-function restart() {
-  const allStates = document.querySelectorAll('.correct');
+function gameOver() {
+  document.getElementById('cheer-sound').play();
+  gameOverGraphic.classList.add('grow');
+  question.style.visibility = 'hidden';
+}
 
+function restartGame() {
+  const allStates = document.querySelectorAll('.correct');
   allStates.forEach((state) => {
-    state.setAttribute('class', 'grey');
+    state.setAttribute('class', 'grey st0');
   });
 
-  document.querySelector('.question').style.visibility = 'visible';
-  document.querySelector('.game-over').classList.remove('grow');
+  question.style.visibility = 'visible';
+  gameOverGraphic.classList.remove('grow');
   counter = 0;
   correctStates = [];
   displayScore();
   displayCounter();
-  question();
+  gameQuestion();
 }
 
 document.querySelector('#united-states').addEventListener('click', trackClicks);
-document.querySelector('.restart-btn').addEventListener('click', restart);
+document.querySelector('.restart-btn').addEventListener('click', restartGame);
 
-question();
+gameQuestion();
