@@ -37,7 +37,12 @@ function trackClicks(e) {
       correctSound.currentTime = 0;
       correctSound.play();
       e.target.setAttribute('class', 'correct');
-      setTimeout(zoomreset, 150);
+      // document.body.style.zoom = 1;
+      const viewportmeta = document.querySelector('meta[name=viewport]');
+      viewportmeta.setAttribute(
+        'content',
+        'width=device-width, initial-scale=0'
+      );
       correctStates.push(stateQuestionDisplay.textContent);
       displayScore();
       stateQuestionDisplay.textContent = shuffledStates[correctStates.length];
@@ -79,13 +84,5 @@ function restart() {
 
 document.querySelector('#united-states').addEventListener('click', trackClicks);
 document.querySelector('.restart-btn').addEventListener('click', restart);
-
-var zoomreset = function () {
-  var viewport = document.querySelector("meta[name='viewport']");
-  // viewport.content = 'maximum-scale=0.635';
-  setTimeout(function () {
-    viewport.content = 'width=device-width, initial-scale=1, maximum-scale=1';
-  }, 350);
-};
 
 question();
