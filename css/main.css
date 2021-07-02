@@ -163,14 +163,20 @@ h2 {
     justify-content: center;
   }
 
+  header {
+    width: 60vw;
+  }
+
   h1 {
-    margin-top: 20px;
+    font-size: 2.5rem;
     margin-bottom: 40px;
   }
 
   .map-container {
     padding: 0;
-    margin: 20px 0 0 50px;
+    margin: 0;
+    margin-top: 10px;
+    height: 75vh;
   }
 
   .score {
