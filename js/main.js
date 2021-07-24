@@ -37,7 +37,6 @@ function trackClicks(e) {
     if (e.target.id.replace(/_/g, ' ') === stateQuestionDisplay.textContent) {
       correctAnswer(e);
     } else {
-      navigator.vibrate(500);
       e.target.setAttribute('class', 'incorrect');
       setTimeout(() => {
         e.target.setAttribute('class', 'grey st0');
