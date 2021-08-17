@@ -5,7 +5,21 @@ PLAY HERE: [https://brandicameron.github.io/states/](https://brandicameron.githu
 
 ## Screenshot
 
-![App Screenshot](https://brandicameron.github.io/states/img/screen-shot.png)
+![App Screenshot](./img/screen-shot.png)
+
+---
+
+## Things Learned:
+
+- How to add id's to different areas of a single svg to make them actionable
+- Making an SVG based game accessible/tabbable
+- Changing colors dynamically on svg's
+- Adding sound effects
+- How to stop a sound mid play & restart if items clicked in quick succession
+- Reinforced pushing data to an array
+- Reinforced using counters
+
+---
 
 ## Author
 

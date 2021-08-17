@@ -101,6 +101,8 @@ function restartGame() {
   gameQuestion();
 }
 
+// ---------------- ACCESSIBILITY ----------------
+
 function makeGameKeyboardAccessible(e) {
   const allStatePaths = document.querySelectorAll('.st0');
 
@@ -115,6 +117,8 @@ function makeGameKeyboardAccessible(e) {
   }
 }
 
+// ---------------- EVENT LISTENERS ----------------
+
 const usMap = document.querySelector('#united-states');
 usMap.addEventListener('click', trackClicks);
 usMap.addEventListener('keyup', makeGameKeyboardAccessible);
@@ -122,7 +126,8 @@ document.querySelector('.restart-btn').addEventListener('click', restartGame);
 
 gameQuestion();
 
-// Test
+// ---------------- TEST ----------------
+
 function getToEnd() {
   correctStates = 50;
   // counter = 8;

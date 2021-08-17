@@ -33,14 +33,6 @@ main {
   margin-bottom: 50px;
 }
 
-.not-found-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
 header {
   text-align: center;
 }
@@ -74,7 +66,6 @@ h2 {
   justify-content: center;
   align-items: center;
   padding: 0 30px 30px 30px;
-  margin-top: -20px;
 }
 
 path {
