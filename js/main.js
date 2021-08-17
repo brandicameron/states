@@ -11,13 +11,11 @@ function shuffle(array) {
     temporaryValue,
     randomIndex;
 
-  // While there remain elements to shuffle...
   while (0 !== currentIndex) {
     // Pick a remaining element...
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex -= 1;
 
-    // And swap it with the current element.
     temporaryValue = array[currentIndex];
     array[currentIndex] = array[randomIndex];
     array[randomIndex] = temporaryValue;
@@ -32,8 +30,8 @@ function gameQuestion() {
 
 function trackClicks(e) {
   if (e.target.classList.contains('st0')) {
-    counter++;
-    displayCounter();
+    // counter++;
+    // displayCounter();
     if (e.target.id.replace(/_/g, ' ') === stateQuestionDisplay.textContent) {
       correctAnswer(e);
     } else {
@@ -41,6 +39,8 @@ function trackClicks(e) {
       setTimeout(() => {
         e.target.setAttribute('class', 'grey st0');
       }, 100);
+      counter++;
+      displayCounter();
     }
   }
 }
@@ -70,9 +70,22 @@ function displayScore() {
 }
 
 function gameOver() {
+  const praise = document.querySelector('.praise');
+  const gameRoundStats = document.querySelector('.game-round-stats');
   document.getElementById('cheer-sound').play();
   gameOverGraphic.classList.add('grow');
   question.style.visibility = 'hidden';
+
+  if (counter > 5) {
+    praise.textContent = 'Keep Trying!';
+    gameRoundStats.textContent = `You missed ${counter} states.`;
+  } else if (counter > 0) {
+    praise.textContent = 'Great Job!';
+    gameRoundStats.textContent = `You only missed ${counter} states.`;
+  } else {
+    praise.textContent = 'Amazing!';
+    gameRoundStats.textContent = `You didn't miss a single one!`;
+  }
 }
 
 function restartGame() {
@@ -94,3 +107,14 @@ document.querySelector('#united-states').addEventListener('click', trackClicks);
 document.querySelector('.restart-btn').addEventListener('click', restartGame);
 
 gameQuestion();
+
+// Test
+function getToEnd() {
+  correctStates = 50;
+  counter = 8;
+  // counter = 3;
+  // counter = 0;
+  gameOver();
+}
+
+// getToEnd();
