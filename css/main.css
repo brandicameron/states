@@ -1,7 +1,10 @@
 :root {
   --green: rgb(46, 202, 46);
   --blue: #1497e9;
+  --dark-blue: #0072ff;
   --red: #e9142d;
+  --gradient90: linear-gradient(-90deg, #00c6ff, #0072ff);
+  --gradient45: linear-gradient(-45deg, #00c6ff, #0072ff);
   --display-font: 'Work Sans', sans-serif;
 }
 
@@ -25,7 +28,7 @@ h1 {
   letter-spacing: -0.5px;
   color: transparent;
   background: #0072ff;
-  background: linear-gradient(-90deg, #00c6ff, #0072ff);
+  background: var(--gradient90);
   -webkit-background-clip: text;
   background-clip: text;
   background-attachment: fixed;
@@ -46,6 +49,15 @@ h2 {
   align-items: center;
   padding: 0 30px 30px 30px;
   margin-top: -20px;
+}
+
+path {
+  outline: none;
+}
+
+path:focus {
+  stroke: #0072ff;
+  stroke-width: 5px;
 }
 
 .st0:hover {
@@ -70,11 +82,11 @@ h2 {
   justify-content: space-around;
   width: 190px;
   padding: 20px 10px;
-  border-radius: 15px 0 0 0;
+  border-radius: 0 0 0 15px;
   right: 0;
-  bottom: 0;
+  top: 0;
   background: #0072ff;
-  background: linear-gradient(-45deg, #00c6ff, #0072ff);
+  background: var(--gradient45);
   color: #fff;
   text-align: center;
 }
@@ -100,7 +112,7 @@ h2 {
   margin-right: -50%;
   transform: translate(-50%, -50%) scale(0);
   background: #0072ff;
-  background: linear-gradient(-45deg, #00c6ff, #0072ff);
+  background: var(--gradient45);
   color: #fff;
   width: 300px;
   height: 300px;

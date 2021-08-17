@@ -103,7 +103,13 @@ function restartGame() {
   gameQuestion();
 }
 
-document.querySelector('#united-states').addEventListener('click', trackClicks);
+const usMap = document.querySelector('#united-states');
+usMap.addEventListener('click', trackClicks);
+usMap.addEventListener('keyup', (e) => {
+  if (e.keyCode === 13) {
+    trackClicks(e);
+  }
+});
 document.querySelector('.restart-btn').addEventListener('click', restartGame);
 
 gameQuestion();
