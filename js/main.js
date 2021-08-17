@@ -30,8 +30,6 @@ function gameQuestion() {
 
 function trackClicks(e) {
   if (e.target.classList.contains('st0')) {
-    // counter++;
-    // displayCounter();
     if (e.target.id.replace(/_/g, ' ') === stateQuestionDisplay.textContent) {
       correctAnswer(e);
     } else {
@@ -46,7 +44,7 @@ function trackClicks(e) {
 }
 
 function correctAnswer(e) {
-  let correctSound = document.getElementById('correct-sound');
+  const correctSound = document.getElementById('correct-sound');
   correctSound.currentTime = 0;
   correctSound.play();
   e.target.setAttribute('class', 'correct');
@@ -60,12 +58,12 @@ function correctAnswer(e) {
 }
 
 function displayCounter() {
-  let clickDisplay = document.querySelector('.click-display');
+  const clickDisplay = document.querySelector('.click-display');
   clickDisplay.textContent = counter;
 }
 
 function displayScore() {
-  let displayScore = document.querySelector('.score-display');
+  const displayScore = document.querySelector('.score-display');
   displayScore.textContent = correctStates.length;
 }
 
@@ -103,13 +101,23 @@ function restartGame() {
   gameQuestion();
 }
 
-const usMap = document.querySelector('#united-states');
-usMap.addEventListener('click', trackClicks);
-usMap.addEventListener('keyup', (e) => {
+function makeGameKeyboardAccessible(e) {
+  const allStatePaths = document.querySelectorAll('.st0');
+
   if (e.keyCode === 13) {
     trackClicks(e);
   }
-});
+
+  if (e.keyCode === 9) {
+    allStatePaths.forEach((state) => {
+      state.classList.add('tab-selected');
+    });
+  }
+}
+
+const usMap = document.querySelector('#united-states');
+usMap.addEventListener('click', trackClicks);
+usMap.addEventListener('keyup', makeGameKeyboardAccessible);
 document.querySelector('.restart-btn').addEventListener('click', restartGame);
 
 gameQuestion();
@@ -117,10 +125,9 @@ gameQuestion();
 // Test
 function getToEnd() {
   correctStates = 50;
-  counter = 8;
-  // counter = 3;
+  // counter = 8;
+  counter = 3;
   // counter = 0;
   gameOver();
 }
-
 // getToEnd();

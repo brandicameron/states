@@ -15,6 +15,32 @@
   font-family: sans-serif;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+}
+
+main {
+  flex: 1;
+}
+
+.margin-bottom-50 {
+  margin-bottom: 50px;
+}
+
+.not-found-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
 header {
   text-align: center;
 }
@@ -55,7 +81,7 @@ path {
   outline: none;
 }
 
-path:focus {
+.tab-selected:focus {
   stroke: #0072ff;
   stroke-width: 5px;
 }
@@ -161,6 +187,64 @@ path:focus {
   }
 }
 
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 175px;
+  background: var(--gradient45);
+  color: #fff;
+  margin-top: 100px;
+  text-align: center;
+}
+
+footer a {
+  color: #fff;
+}
+
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  margin: 20px 0;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  margin: 0 10px;
+  transition: transform 100ms;
+  background: url('../img/contact-icons.svg') no-repeat;
+  background-size: cover;
+}
+
+.icon:hover {
+  transform: scale(1.05) translateY(-1px);
+}
+
+.twitter-icon {
+  background-position: -1px 0px;
+}
+
+.github-icon {
+  background-position: -37px 0px;
+  width: 31px;
+}
+
+.email-icon {
+  background-position: -75px 0px;
+}
+
+@media (pointer: coarse) {
+  path:focus {
+    stroke: transparent;
+    stroke-width: 0;
+  }
+}
+
 @media (pointer: coarse) and (orientation: landscape) {
   .map-container {
     height: 80vh;
@@ -198,6 +282,8 @@ path:focus {
 
   .score {
     left: 0;
+    top: unset;
+    bottom: 0;
     border-radius: 0 15px 0 0;
     width: 225px;
   }
@@ -205,18 +291,25 @@ path:focus {
 
 @media screen and (max-width: 550px) {
   header {
+    position: relative;
     top: 15px;
   }
 
-  header,
   .score {
     position: fixed;
     width: 100vw;
     border-radius: 0;
+    top: unset;
+    bottom: 0;
   }
 
   .map-container {
-    height: 100vh;
     padding: 5px;
+    height: 60vh;
+  }
+
+  footer {
+    margin-top: 0;
+    margin-bottom: 90px;
   }
 }
