@@ -19,6 +19,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  /* background: var(--gradient90); */
 }
 
 a {
@@ -110,7 +111,7 @@ path {
 
 .score-container {
   margin: 0 10px;
-  font-size: 0.8rem;
+  font-size: 0.95rem;
 }
 
 .number {
@@ -284,6 +285,10 @@ footer a {
   header {
     position: relative;
     top: 15px;
+  }
+
+  .score-container {
+    font-size: 1.5rem;
   }
 
   .score {
